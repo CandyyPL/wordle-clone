@@ -1,0 +1,311 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  width: 100%;
+
+  background-color: #eee;
+
+  margin: 0;
+  padding: 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+main.game-container {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
+
+  @media screen and (width > 640px) {
+    gap: 40px;
+  }
+}
+
+header.logo {
+  width: 100%;
+  height: 75px;
+
+  // background-color: #aaa;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 32px;
+  font-family: 'Outfit', sans-serif;
+  font-weight: bold;
+
+  @media screen and (width > 640px) {
+    font-size: 50px;
+  }
+}
+
+section.game {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+section.user-words {
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+ul.words-list {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+
+  list-style-type: none;
+
+  padding: 0;
+}
+
+.single-word {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 4px;
+
+  &.not-word {
+    animation: shake 0.2s;
+  }
+
+  @keyframes shake {
+    0% {
+      transform: translateX(0);
+    }
+    33% {
+      transform: translateX(-15px);
+    }
+    66% {
+      transform: translateX(15px);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+}
+
+.word-letter {
+  width: 48px;
+  height: 48px;
+
+  @media screen and (width > 640px) {
+    width: 64px;
+    height: 64px;
+  }
+
+  border: 2px solid #666;
+  border-radius: 2px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 24px;
+  font-family: 'Outfit', sans-serif;
+  font-weight: bold;
+
+  @media screen and (width > 640px) {
+    font-size: 28px;
+  }
+
+  &.exact {
+    background-color: #50d676;
+  }
+
+  &.included {
+    background-color: #dfa253;
+  }
+
+  &.fail {
+    background-color: #858585;
+  }
+
+  &.exact,
+  &.included,
+  &.fail {
+    border: none;
+
+    animation: check 0.2s;
+  }
+
+  &.active {
+    background-color: #ddd;
+
+    border: 2px dashed black;
+
+    animation: pop 0.2s;
+  }
+
+  @keyframes pop {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.05) rotate(5deg);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  @keyframes check {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(0.95) rotate(-5deg);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+}
+
+.keyboard {
+  // max-width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.keys-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.key {
+  width: 32px;
+  height: 48px;
+
+  @media screen and (width > 640px) {
+    width: 48px;
+    height: 64px;
+  }
+
+  background-color: #bbb;
+  border-radius: 6px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin: 2px;
+
+  font-size: 18px;
+  font-family: 'Outfit', sans-serif;
+
+  @media screen and (width > 640px) {
+    font-size: 22px;
+  }
+
+  cursor: pointer;
+
+  &:hover {
+    border: 2px solid black;
+  }
+
+  &.wide-key {
+    width: 48px;
+
+    @media screen and (width > 640px) {
+      width: 72px;
+    }
+  }
+
+  &.enter-key {
+    font-size: 22px;
+
+    @media screen and (width > 640px) {
+      font-size: 26px;
+    }
+  }
+
+  &.exact {
+    background-color: #50d676;
+  }
+
+  &.included {
+    background-color: #dfa253;
+  }
+
+  &.fail {
+    background-color: #858585;
+  }
+
+  &.exact,
+  &.included,
+  &.fail {
+    animation: key-check 0.2s;
+  }
+
+  @keyframes key-check {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(0.95);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+}
+
+.used {
+  background-color: coral;
+}
+
+footer {
+  width: 100%;
+  height: 40px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 16px;
+  font-family: 'Outfit', sans-serif;
+
+  a {
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
